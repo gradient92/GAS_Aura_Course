@@ -4,7 +4,7 @@
 #include "Player/AuraPlayerState.h"
 
 #include "AbilitySystem/AuraAttributeSet.h"
-#include "AblitySystem/AuraAbilitySystemComponent.h"
+#include "AbilitySystem/AuraAbilitySystemComponent.h"
 
 AAuraPlayerState::AAuraPlayerState()
 {
