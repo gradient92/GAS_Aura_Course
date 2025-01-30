@@ -33,12 +33,17 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 		.AddUObject(this, &UOverlayWidgetController::MaxManaChanged);
 
 	Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent)->EffectAssetTags.AddLambda(
-		[](const FGameplayTagContainer& AssetTags)
+		[this](const FGameplayTagContainer& AssetTags)
 		{
 			for (const FGameplayTag& Tag : AssetTags)
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue,
-					FString::Printf(TEXT("GE TAG: %s"), *Tag.ToString()));
+				FGameplayTag MessageTag = FGameplayTag::RequestGameplayTag(FName("Message"));
+				
+				if(Tag.MatchesTag(MessageTag))
+				{
+					const FUIWidgetRow* Row = GetDataTableRowByTag<FUIWidgetRow>(MessageWidgetDataTable, Tag);
+					MessageWidgetRowDelegate.Broadcast(*Row);
+				}
 			}
 		}
 	);
