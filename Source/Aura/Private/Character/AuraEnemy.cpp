@@ -34,6 +34,13 @@ void AAuraEnemy::UnHighlightActor()
 }
 #pragma endregion
 
+#pragma region Combat Interface
+int32 AAuraEnemy::GetPlayerLevel()
+{
+	return Level;
+}
+#pragma endregion 
+
 void AAuraEnemy::BeginPlay()
 {
 	Super::BeginPlay();
