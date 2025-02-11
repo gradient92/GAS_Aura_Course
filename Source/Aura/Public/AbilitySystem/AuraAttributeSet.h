@@ -59,6 +59,8 @@ public:
 
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 	
+	TMap<FGameplayTag, FGameplayAttribute(*)()> TagsToAttributes;
+
 private:
 	static void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props);
 
