@@ -43,7 +43,7 @@ private:
 	TObjectPtr<UInputAction> ShiftAction;
 
 	void ShiftPressed() { bShiftKeyDown = true; }
-	void ShiftReleased() { bShiftKeyDown = true; }
+	void ShiftReleased() { bShiftKeyDown = false; }
 	bool bShiftKeyDown = false;
 	
 	void Move(const FInputActionValue& InputActionValue);
